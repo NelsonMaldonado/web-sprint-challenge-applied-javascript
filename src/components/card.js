@@ -1,4 +1,6 @@
-const Card = (article) => {
+import axios from "axios";
+
+const Card = ({ headline, authorPhoto, authorName }) => {
   // TASK 5
   // ---------------------
   // Implement this function, which should return the markup you see below.
@@ -7,6 +9,7 @@ const Card = (article) => {
   // The text inside elements will be set using their `textContent` property (NOT `innerText`).
   // Add a listener for click events so that when a user clicks on a card, the headline of the article is logged to the console.
   //
+
   // <div class="card">
   //   <div class="headline">{ headline }</div>
   //   <div class="author">
@@ -16,6 +19,7 @@ const Card = (article) => {
   //     <span>By { authorName }</span>
   //   </div>
   // </div>
+
   // elements
   const cardDiv = document.createElement("div");
   const headLineDiv = document.createElement("div");
@@ -32,7 +36,6 @@ const Card = (article) => {
 
   // text content
   headLineDiv.textContent = `${headline}`;
-  authorDiv.textContent = `${author}`;
   authorSpan.textContent = `${authorName}`;
 
   // attributes
@@ -45,10 +48,29 @@ const Card = (article) => {
   imgDiv.appendChild(img);
   authorDiv.appendChild(authorSpan);
 
+  // event listener
+  function consoleFunc() {
+    console.log(`${headline}`);
+  }
+  cardDiv.addEventListener("click", consoleFunc);
+
   return cardDiv;
 };
 
 const cardAppender = (selector) => {
+  const cardContainer = document.querySelector(".cards-container");
+  axios
+    .get("http://localhost:5000/api/articles")
+    .then((res) => {
+      console.log(`here's the obj ${res.data.articles.javascript[0]}`);
+      const articleObj = Card(res.data.articles.javascript[0]);
+      const articleObj2 = Card(res.data.articles.javascript[1]);
+      cardContainer.appendChild(articleObj);
+      cardContainer.appendChild(articleObj2);
+    })
+    .catch((err) => {
+      console.error(`didn't load correctly ${err}`);
+    });
   // TASK 6
   // ---------------------
   // Implement this function that takes a css selector as its only argument.
