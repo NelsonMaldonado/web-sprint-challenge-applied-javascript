@@ -19,22 +19,30 @@ const Tabs = (topics) => {
   const tabDivJS = document.createElement("div");
   const tabDivBS = document.createElement("div");
   const tabDivTech = document.createElement("div");
+  const tabDivJQ = document.createElement("div");
+  const tabDivNJS = document.createElement("div");
 
   // classes
   topicsDiv.classList.add("topics");
   tabDivJS.classList.add("tab");
   tabDivBS.classList.add("tab");
   tabDivTech.classList.add("tab");
+  tabDivJQ.classList.add("tab");
+  tabDivNJS.classList.add("tab");
 
   // text content
   tabDivJS.textContent = "javascript";
   tabDivBS.textContent = "bootstrap";
   tabDivTech.textContent = "technology";
+  tabDivJQ.textContent = "Jquery";
+  tabDivNJS.textContent = "Node.JS";
 
   // append
   topicsDiv.appendChild(tabDivJS);
   topicsDiv.appendChild(tabDivBS);
   topicsDiv.appendChild(tabDivTech);
+  topicsDiv.appendChild(tabDivJQ);
+  topicsDiv.appendChild(tabDivNJS);
 
   return topicsDiv;
 };

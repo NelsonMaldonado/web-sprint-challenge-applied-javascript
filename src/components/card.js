@@ -62,14 +62,53 @@ const cardAppender = (selector) => {
   axios
     .get("http://localhost:5000/api/articles")
     .then((res) => {
-      console.log(`here's the obj ${res.data.articles.javascript[0]}`);
+      console.log(res.data.articles);
+
+      //Node
+      //Jquery
+      const articleEObj = Card(res.data.articles.node[0]);
+      const articleEObj2 = Card(res.data.articles.node[1]);
+
+      cardContainer.appendChild(articleEObj2);
+      cardContainer.appendChild(articleEObj);
+
+      //Jquery
+      const articleDObj = Card(res.data.articles.jquery[0]);
+      const articleDObj2 = Card(res.data.articles.jquery[1]);
+      const articleDObj3 = Card(res.data.articles.jquery[2]);
+
+      cardContainer.appendChild(articleDObj2);
+      cardContainer.appendChild(articleDObj3);
+      cardContainer.appendChild(articleDObj);
+
+      //Technology
+      const articleCObj = Card(res.data.articles.technology[0]);
+      const articleCObj2 = Card(res.data.articles.technology[1]);
+      const articleCObj3 = Card(res.data.articles.technology[2]);
+
+      cardContainer.appendChild(articleCObj2);
+      cardContainer.appendChild(articleCObj3);
+      cardContainer.appendChild(articleCObj);
+      //Bootstrap
+      const articleBObj = Card(res.data.articles.bootstrap[0]);
+      const articleBObj2 = Card(res.data.articles.bootstrap[1]);
+      const articleBObj3 = Card(res.data.articles.bootstrap[2]);
+
+      cardContainer.appendChild(articleBObj2);
+      cardContainer.appendChild(articleBObj3);
+      cardContainer.appendChild(articleBObj);
+      //Javascript
       const articleObj = Card(res.data.articles.javascript[0]);
       const articleObj2 = Card(res.data.articles.javascript[1]);
-      cardContainer.appendChild(articleObj);
+      const articleObj3 = Card(res.data.articles.javascript[2]);
+      const articleObj4 = Card(res.data.articles.javascript[3]);
       cardContainer.appendChild(articleObj2);
+      cardContainer.appendChild(articleObj3);
+      cardContainer.appendChild(articleObj4);
+      cardContainer.appendChild(articleObj);
     })
     .catch((err) => {
-      console.error(`didn't load correctly ${err}`);
+      console.error(err);
     });
   // TASK 6
   // ---------------------
