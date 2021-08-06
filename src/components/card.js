@@ -16,7 +16,36 @@ const Card = (article) => {
   //     <span>By { authorName }</span>
   //   </div>
   // </div>
-  //
+  // elements
+  const cardDiv = document.createElement("div");
+  const headLineDiv = document.createElement("div");
+  const authorDiv = document.createElement("div");
+  const imgDiv = document.createElement("div");
+  const img = document.createElement("img");
+  const authorSpan = document.createElement("span");
+
+  // classes
+  cardDiv.classList.add("card");
+  headLineDiv.classList.add("headline");
+  authorDiv.classList.add("author");
+  imgDiv.classList.add("img-container");
+
+  // text content
+  headLineDiv.textContent = `${headline}`;
+  authorDiv.textContent = `${author}`;
+  authorSpan.textContent = `${authorName}`;
+
+  // attributes
+  img.setAttribute("src", `${authorPhoto}`);
+
+  // append
+  cardDiv.appendChild(headLineDiv);
+  cardDiv.appendChild(authorDiv);
+  authorDiv.appendChild(imgDiv);
+  imgDiv.appendChild(img);
+  authorDiv.appendChild(authorSpan);
+
+  return cardDiv;
 };
 
 const cardAppender = (selector) => {
@@ -31,5 +60,3 @@ const cardAppender = (selector) => {
 };
 
 export { Card, cardAppender };
-
-const temp = "erase this constant";
